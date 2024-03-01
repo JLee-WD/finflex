@@ -27,13 +27,13 @@ function App() {
     }
     console.log('result: ', result);
     console.log('searchResult: ', searchResult);
-    
   }
 
   return (
     <div className="App">
       <Search search={search} handleChange={handleChange} onClick={onClick} />
-      <CardList />
+      {serverError && <h1>{serverError}</h1>}
+      <CardList searchResult={searchResult} />
     </div>
   );
 }
