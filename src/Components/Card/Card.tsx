@@ -13,13 +13,23 @@ interface Props {
 // Assigned the type of a React functional component (React.FC) that takes a generic type Props. This component is expected to receive props conforming to the Props interface, then explicitly states that it returns a JSX.Element.
 const Card: React.FC<Props> = ({ id, searchResult, onPortfolioCreate }: Props) : JSX.Element => {
   return (
-    <div className='card'><img src='https://images.unsplash.com/photo-1682686578456-69ae00b0ecbd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='test' />
-      <div className='details'>
-        <h2>{searchResult.name} ({searchResult.symbol})</h2>
-        <p>{searchResult.exchangeShortName} - {searchResult.stockExchange}</p>
-      </div>
-      <AddPortfolio onPortfolioCreate={onPortfolioCreate} symbol={searchResult.symbol} />
-    </div>
+  <div
+      className="flex flex-col items-center justify-between w-full p-6 bg-slate-100 rounded-lg md:flex-row"
+      key={id}
+      id={id}
+    >
+      <h2 className="font-bold text-center text-veryDarkViolet md:text-left">
+        {searchResult.name} ({searchResult.symbol})
+      </h2>
+      <p className="text-veryDarkBlue">{searchResult.currency}</p>
+      <p className="font-bold text-veryDarkBlue">
+        {searchResult.exchangeShortName} - {searchResult.stockExchange}
+      </p>
+    <AddPortfolio
+      onPortfolioCreate={onPortfolioCreate}
+      symbol={searchResult.symbol}
+    />
+  </div>
   )
 }
 

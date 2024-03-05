@@ -5,6 +5,8 @@ import { SyntheticEvent, useState } from 'react';
 import { CompanySearch } from './company';
 import { searchCompanies } from './api';
 import ListPortfolio from './Components/Portfolio/ListPortfolio/ListPortfolio';
+import Navbar from './Components/Navbar/Navbar';
+import Hero from './Components/Hero/Hero';
 
 function App() {
   const [search, setSearch] = useState<string>("")
@@ -39,6 +41,8 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
+      <Hero />
       <Search search={search} handleSearchChange={handleSearchChange} onSearchSubmit={onSearchSubmit} />
       <ListPortfolio portfolioValues={portfolioValues} onPortfolioDelete={onPortfolioDelete} />
       {serverError && <h1>{serverError}</h1>}
