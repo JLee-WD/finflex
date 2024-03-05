@@ -8,7 +8,7 @@ interface Props {
   onPortfolioCreate: (e: SyntheticEvent) => void;
 }
 
-const CardList : React.FC<Props> = ({searchResult, onPortfolioCreate}: Props): JSX.Element => {
+const CardList : React.FC<Props> = ({searchResult, onPortfolioCreate, }: Props): JSX.Element => {
   return (
     <div>
       {searchResult.length > 0 ? (searchResult.length > 0 && searchResult.map((company) => {
