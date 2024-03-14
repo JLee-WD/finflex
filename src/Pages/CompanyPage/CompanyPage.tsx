@@ -4,6 +4,7 @@ import CompanyDashboard from '../../Components/CompanyDashboard/CompanyDashboard
 import { useParams } from 'react-router'
 import { CompanyProfile } from '../../company'
 import { getCompanyProfile } from '../../api'
+import Tile from '../../Components/Tile/Tile'
 
 interface Props {}
 
@@ -23,7 +24,9 @@ const CompanyPage = (props: Props) => {
       {company ?
             <div className="w-full relative flex ct-docs-disable-sidebar-content overflow-x-hidden">
               <Sidebar />
-              <CompanyDashboard />
+              <CompanyDashboard ticker={ticker!}>
+                <Tile title="Company Name" subTitle={company?.companyName}/>
+              </CompanyDashboard>
               <div>{company?.companyName}</div>
             </div> : <div>Company not found!</div>
       }
