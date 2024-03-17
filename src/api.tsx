@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CompanyProfile, CompanySearch, CompanyKeyMetrics } from './company';
+import { CompanyProfile, CompanySearch, CompanyKeyMetrics, CompanyIncomeStatement, CompanyBalanceSheet, CompanyCashFlow } from './company';
 
 interface SearchResponse {
   data: CompanySearch[];
