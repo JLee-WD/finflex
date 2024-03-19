@@ -3,6 +3,7 @@ import { CompanyBalanceSheet, CompanyCashFlow } from '../../company';
 import { useOutletContext } from 'react-router-dom';
 import { getBalanceSheet } from '../../api';
 import RatioList from '../RatioList/RatioLIst';
+import Spinner from '../Spinner/Spinner';
 
 type Props = {}
 const config = [
@@ -73,7 +74,7 @@ const BalanceSheet = (props: Props) => {
   return (
     <>
       {balanceSheet ? (
-        <RatioList data={balanceSheet} config={config} /> ) : <>Company Not Found</>
+        <RatioList data={balanceSheet} config={config} /> ) : <Spinner />
       }
     </>
   )
