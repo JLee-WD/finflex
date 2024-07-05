@@ -1,29 +1,17 @@
 import React from 'react'
 import { testIncomeStatementData } from './testData'
 
-const data = testIncomeStatementData
+interface Props {
+  data: any,
+  config: any;
+};
 
-interface Props {};
-
-type Company = (typeof data)[0];
-
-const config = [
-  {
-    label: "Year",
-    render: (company: Company) => company.acceptedDate,
-  },
-  {
-    label: "Cost of Revenue",
-    render: (company: Company) => company.costOfRevenue,
-  }
-]
-
-const Table = (props: Props) => {
+const Table = ({config, data}: Props) => {
   const renderedHeaders = config.map((config: any) => {
     return <th className='p-4 text-left font-medium text-fray-500 uppercase tracking-wider'>{config.label}</th>
   })
 
-  const renderedRows = data.map((company) => {
+  const renderedRows = data.map((company: any) => {
     return (
       <tr key={company.cik}>
         {config.map((val: any) => {
