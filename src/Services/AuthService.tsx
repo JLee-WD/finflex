@@ -24,11 +24,14 @@ export const registerAPI = async (
   password: string
 ) => {
   try {
-    const response = await axios.post<UserProfileToken>(api + 'account/login', {
-      email,
-      username,
-      password,
-    });
+    const response = await axios.post<UserProfileToken>(
+      api + 'account/register',
+      {
+        email,
+        username,
+        password,
+      }
+    );
     return response;
   } catch (loginError) {
     handleError(loginError);
