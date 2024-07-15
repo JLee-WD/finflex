@@ -2,13 +2,13 @@ import axios from 'axios';
 import { handleError } from '../Helpers/ErrorHandler';
 import { UserProfileToken } from '../Models/User';
 
-// const api = 'http://localhost:5162/api/';
+const api = process.env.REACT_APP_API_URL;
 
 export const loginAPI = async (username: string, password: string) => {
   console.log('loginAPI: ', username, password);
 
   try {
-    const response = await axios.post<UserProfileToken>(process.env.REACT_APP_API_KEY + 'account/login', {
+    const response = await axios.post<UserProfileToken>(api + 'account/login', {
       username,
       password,
     });
@@ -25,7 +25,7 @@ export const registerAPI = async (
 ) => {
   try {
     const response = await axios.post<UserProfileToken>(
-      process.env.REACT_APP_API_KEY + 'account/register',
+      api + 'account/register',
       {
         email,
         username,

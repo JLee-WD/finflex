@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { CompanySearch } from '../../company';
 import { searchCompanies } from '../../api';
-import Hero from '../../Components/Hero/Hero';
+// import Hero from '../../Components/Hero/Hero';
 import Search from '../../Components/Search/Search';
 import ListPortfolio from '../../Components/Portfolio/ListPortfolio/ListPortfolio';
 import CardList from '../../Components/CardList/CardList';
