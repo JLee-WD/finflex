@@ -51,11 +51,27 @@ export const UserProvider = ({ children }: Props) => {
           localStorage.setItem('user', JSON.stringify(userObj));
           setToken(res?.data?.token);
           setUser(userObj);
-          toast.success('Login Successful');
+          toast.success('Login Successful', {
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            theme: 'light',
+            transition: Bounce,
+          });
           navigate('/search');
         }
       })
-      .catch((e) => toast.warning('Server error occured', e));
+      .catch((e) =>
+        toast.warning(e, {
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: 'light',
+          transition: Bounce,
+        })
+      );
   };
   const loginUser = async (username: string, password: string) => {
     await loginAPI(username, password)
@@ -74,13 +90,22 @@ export const UserProvider = ({ children }: Props) => {
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
-            theme: "light",
+            theme: 'light',
             transition: Bounce,
-            });
+          });
           navigate('/search');
         }
       })
-      .catch((e) => toast.warning('Server error occured', e));
+      .catch((e) =>
+        toast.warning(e, {
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: 'light',
+          transition: Bounce,
+        })
+      );
   };
 
   const isLoggedIn = () => {

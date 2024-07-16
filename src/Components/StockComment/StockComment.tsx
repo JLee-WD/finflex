@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import StockCommentForm from './StockCommentForm/StockCommentForm';
 import { commentGetAPI, commentPostAPI } from '../../Services/CommentService';
-import { toast } from 'react-toastify';
+import { Bounce, toast } from 'react-toastify';
 import { CommentGet } from '../../Models/Comment';
 import Spinner from '../Spinner/Spinner';
 import StockCommentList from '../StockCommentList/StockCommentList';
@@ -27,11 +27,27 @@ const StockComment = ({ stockSymbol }: Props) => {
     commentPostAPI(form.title, form.content, stockSymbol)
       .then((res) => {
         if (res) {
-          toast.success('Comment posted');
+          toast.success('Comment posted', {
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            theme: 'light',
+            transition: Bounce,
+          });
           getComments();
         }
       })
-      .catch((e) => toast.warning(e));
+      .catch((e) =>
+        toast.warning(e, {
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: 'light',
+          transition: Bounce,
+        })
+      );
   };
 
   const getComments = () => {
@@ -43,7 +59,16 @@ const StockComment = ({ stockSymbol }: Props) => {
           setComments(res?.data);
         }
       })
-      .catch((e) => toast.warning(e));
+      .catch((e) =>
+        toast.warning(e, {
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: 'light',
+          transition: Bounce,
+        })
+      );
   };
 
   return (

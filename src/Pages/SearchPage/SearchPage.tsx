@@ -11,7 +11,7 @@ import {
   portfolioDeleteAPI,
   portfolioGetAPI,
 } from '../../Services/PortfolioService';
-import { toast } from 'react-toastify';
+import { Bounce, toast } from 'react-toastify';
 
 interface Props {}
 
@@ -28,19 +28,29 @@ const SearchPage = (props: Props) => {
   };
 
   useEffect(() => {
-    getPortfolio();
+    const user = localStorage.getItem('user');
+    if (user) {
+      getPortfolio();
+    }
   }, []);
 
   const getPortfolio = async () => {
     portfolioGetAPI()
       .then((res) => {
-        if (res?.data) {
+        if (res?.data && Array.isArray(res.data)) {
           setPortfolioValues(res.data);
         }
       })
       .catch((e) => {
         setPortfolioValues(null);
-        toast.warning('Error getting portfolio');
+        toast.warning('Error getting portfolio', {
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: 'light',
+          transition: Bounce,
+        });
       });
   };
 
@@ -59,11 +69,27 @@ const SearchPage = (props: Props) => {
     portfolioAddAPI(e.target[0].value)
       .then((res) => {
         if (res?.status === 204) {
-          toast.success('Added to portfolio');
+          toast.success('Added to portfolio', {
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            theme: 'light',
+            transition: Bounce,
+          });
           getPortfolio();
         }
       })
-      .catch((e) => toast.warning(e));
+      .catch((e) =>
+        toast.warning(e, {
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: 'light',
+          transition: Bounce,
+        })
+      );
   };
 
   const onPortfolioDelete = (e: any) => {
@@ -71,11 +97,27 @@ const SearchPage = (props: Props) => {
     portfolioDeleteAPI(e.target[0].value)
       .then((res) => {
         if (res?.status === 200) {
-          toast.success('Stock deleted');
+          toast.success('Stock deleted', {
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            theme: 'light',
+            transition: Bounce,
+          });
           getPortfolio();
         }
       })
-      .catch((e) => toast.warning(e));
+      .catch((e) =>
+        toast.warning(e, {
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          theme: 'light',
+          transition: Bounce,
+        })
+      );
   };
 
   return (
