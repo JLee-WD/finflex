@@ -6,7 +6,9 @@ const api = process.env.REACT_APP_API_URL;
 
 export const portfolioAddAPI = async (symbol: string) => {
   try {
-    const data = await axios.post<PortfolioPost>(api + `portfolio?symbol=${symbol}`);
+    const data = await axios.post<PortfolioPost>(
+      api + `portfolio?symbol=${symbol}`
+    );
     return data;
   } catch (portfolioError) {
     handleError(portfolioError);
@@ -14,7 +16,9 @@ export const portfolioAddAPI = async (symbol: string) => {
 };
 export const portfolioDeleteAPI = async (symbol: string) => {
   try {
-    const data = await axios.delete<PortfolioPost>(api + `portfolio?symbol=${symbol}`);
+    const data = await axios.delete<PortfolioPost>(
+      api + `portfolio?symbol=${symbol}`
+    );
     return data;
   } catch (portfolioError) {
     handleError(portfolioError);
