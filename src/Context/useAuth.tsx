@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { UserProfile } from '../Models/User';
 import { useNavigate } from 'react-router';
 import { loginAPI, registerAPI } from '../Services/AuthService';
-import { toast } from 'react-toastify';
+import { toast, Bounce } from 'react-toastify';
 import axios from 'axios';
 
 type UserContextType = {
@@ -69,7 +69,14 @@ export const UserProvider = ({ children }: Props) => {
           localStorage.setItem('user', JSON.stringify(userObj));
           setToken(res?.data?.token);
           setUser(userObj);
-          toast.success('Login Successful');
+          toast.success('Login Successful', {
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            theme: "light",
+            transition: Bounce,
+            });
           navigate('/search');
         }
       })
@@ -79,6 +86,7 @@ export const UserProvider = ({ children }: Props) => {
   const isLoggedIn = () => {
     return !!user;
   };
+
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
