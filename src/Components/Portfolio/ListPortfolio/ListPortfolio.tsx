@@ -28,7 +28,7 @@ const ListPortfolio: React.FC<Props> = ({
               );
             })
           ) : (
-            <h3 className="mb-3 mt-3 text-xl font-semibold text-center md:text-xl">
+            <h3 className="mb-3 mt-3 text-xl font-semibold text-center text-white md:text-xl">
               Your portfolio is empty.
             </h3>
           )}

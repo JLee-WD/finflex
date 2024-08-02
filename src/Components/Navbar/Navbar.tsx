@@ -16,13 +16,13 @@ const Navbar = (props: Props) => {
             <img src={logo} alt="" />
           </Link>
           <div className="hidden font-bold lg:flex">
-            <Link to="/search" className="text-black hover:text-darkBlue">
+            <Link to="/search" className="text-white hover:text-darkBlue">
               Search
             </Link>
           </div>
         </div>
         {isLoggedIn() ? (
-          <div className="hidden lg:flex items-center space-x-6 text-back">
+          <div className="hidden lg:flex items-center space-x-6 text-white">
             <div className="hover:text-darkBlue">Welcome, {user?.userName}</div>
             <Link
               to="/search"

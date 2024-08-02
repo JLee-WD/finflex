@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from "react"
+import { SyntheticEvent, useState } from 'react';
 
 // onClick and handleChange prop is a function that takes an event (e) of type SyntheticEvent and React.ChangeEvent<HTMLInputElement> as its argument and returns void (i.e., it doesn't return anything). This typically indicates an event handler function that will be called when a click event occurs.
 
@@ -13,9 +13,13 @@ interface Props {
   handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Search: React.FC<Props> = ({search, onSearchSubmit, handleSearchChange}: Props): JSX.Element => {
+const Search: React.FC<Props> = ({
+  search,
+  onSearchSubmit,
+  handleSearchChange,
+}: Props): JSX.Element => {
   return (
-    <section className="relative bg-gray-100">
+    <section className="relative">
       <div className="max-w-4xl mx-auto p-6 space-y-6">
         <form
           className="form relative flex flex-col w-full p-4 space-y-4 bg-darkBlue rounded-lg md:flex-row md:space-y-0 md:space-x-3"
@@ -31,7 +35,7 @@ const Search: React.FC<Props> = ({search, onSearchSubmit, handleSearchChange}: P
         </form>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;
